@@ -11,3 +11,4 @@ plugins {
 }
 
 rootProject.name = "skin-changer"
+rootProject.name = "skinchanger"
