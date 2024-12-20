@@ -60,7 +60,6 @@ tasks {
     }
 
     shadowJar {
-        destinationDirectory.set(file("/home/woobb/Documents/Minecraft/spigot-1.21/plugins"))
         isEnableRelocation = true
         relocationPrefix = "me.woobb"
     }
