@@ -21,7 +21,7 @@ import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.contextual
 import me.woobb.skinchanger.internal.utils.UUIDSerializer
 import me.woobb.skinchanger.internal.utils.UserProfileSerializer
-import me.woobb.skinchanger.internal.utils.WrappedGameProfile
+import me.woobb.skinchanger.utils.WrappedGameProfile
 import java.util.*
 
 internal class MojangClient(

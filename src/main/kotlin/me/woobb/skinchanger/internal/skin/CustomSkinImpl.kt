@@ -1,7 +1,7 @@
 package me.woobb.skinchanger.internal.skin
 
-import me.woobb.skinchanger.internal.utils.WrappedTextureProperty
 import me.woobb.skinchanger.skin.CustomSkin
+import me.woobb.skinchanger.utils.WrappedTextureProperty
 import java.util.*
 
 internal open class CustomSkinImpl(

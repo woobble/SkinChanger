@@ -4,10 +4,10 @@ import com.github.retrooper.packetevents.protocol.chat.RemoteChatSession
 import com.github.retrooper.packetevents.protocol.player.ClientVersion
 import com.github.retrooper.packetevents.protocol.player.User
 import me.woobb.skinchanger.internal.SkinChangerImpl
-import me.woobb.skinchanger.internal.utils.WrappedGameProfile
 import me.woobb.skinchanger.internal.utils.gameProfile
 import me.woobb.skinchanger.skin.PlayerSkin
 import me.woobb.skinchanger.skin.Skin
+import me.woobb.skinchanger.utils.WrappedGameProfile
 import org.bukkit.entity.Player
 import java.util.*
 

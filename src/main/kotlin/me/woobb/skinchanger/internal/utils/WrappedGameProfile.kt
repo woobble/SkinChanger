@@ -3,20 +3,12 @@ package me.woobb.skinchanger.internal.utils
 import com.github.retrooper.packetevents.protocol.player.TextureProperty
 import com.github.retrooper.packetevents.protocol.player.UserProfile
 import com.google.common.collect.Multimap
+import me.woobb.skinchanger.utils.WrappedGameProfile
+import me.woobb.skinchanger.utils.WrappedTextureProperty
 import org.bukkit.entity.Player
+import java.lang.reflect.Constructor
+import java.lang.reflect.Field
 import java.util.*
-
-public interface WrappedGameProfile {
-    public var uniqueId: UUID
-    public var name: String
-    public var properties: List<WrappedTextureProperty>
-}
-
-public interface WrappedTextureProperty {
-    public val name: String
-    public val value: String
-    public val signature: String?
-}
 
 internal class PacketEventsTextureProperty(
     private val delegate: TextureProperty,
@@ -73,15 +65,15 @@ internal class MojangProperty(
 
     companion object {
         val MOJANG_PROPERTY_CLASS: Class<*> = Class.forName("com.mojang.authlib.properties.Property")
-        val MOJANG_PROPERTY_CONSTRUCTOR =
+        val MOJANG_PROPERTY_CONSTRUCTOR: Constructor<*> =
             MOJANG_PROPERTY_CLASS.getDeclaredConstructor(
                 String::class.java,
                 String::class.java,
                 String::class.java,
             )
-        val MOJANG_NAME_FIELD = MOJANG_PROPERTY_CLASS.getDeclaredField("name").also { it.isAccessible = true }
-        val MOJANG_VALUE_FIELD = MOJANG_PROPERTY_CLASS.getDeclaredField("value").also { it.isAccessible = true }
-        val MOJANG_SIGNATURE_FIELD = MOJANG_PROPERTY_CLASS.getDeclaredField("signature").also { it.isAccessible = true }
+        val MOJANG_NAME_FIELD: Field = MOJANG_PROPERTY_CLASS.getDeclaredField("name").also { it.isAccessible = true }
+        val MOJANG_VALUE_FIELD: Field = MOJANG_PROPERTY_CLASS.getDeclaredField("value").also { it.isAccessible = true }
+        val MOJANG_SIGNATURE_FIELD: Field = MOJANG_PROPERTY_CLASS.getDeclaredField("signature").also { it.isAccessible = true }
 
         fun createMojangProperty(
             name: String,
@@ -137,21 +129,13 @@ internal class MojangGameProfile(
 
     companion object {
         val MOJANG_GAME_PROFILE_CLASS: Class<*> = Class.forName("com.mojang.authlib.GameProfile")
-        val MOJANG_UUID_FIELD = MOJANG_GAME_PROFILE_CLASS.getDeclaredField("id").also { it.isAccessible = true }
-        val MOJANG_NAME_FIELD = MOJANG_GAME_PROFILE_CLASS.getDeclaredField("name").also { it.isAccessible = true }
-        val MOJANG_PROPERTIES_FIELD = MOJANG_GAME_PROFILE_CLASS.getDeclaredField("properties").also { it.isAccessible = true }
+        val MOJANG_UUID_FIELD: Field = MOJANG_GAME_PROFILE_CLASS.getDeclaredField("id").also { it.isAccessible = true }
+        val MOJANG_NAME_FIELD: Field = MOJANG_GAME_PROFILE_CLASS.getDeclaredField("name").also { it.isAccessible = true }
+        val MOJANG_PROPERTIES_FIELD: Field = MOJANG_GAME_PROFILE_CLASS.getDeclaredField("properties").also { it.isAccessible = true }
     }
 }
 
-internal fun WrappedTextureProperty(
-    name: String,
-    value: String,
-    signature: String?,
-): WrappedTextureProperty = PacketEventsTextureProperty(TextureProperty(name, value, signature))
-
 internal fun WrappedGameProfile(mojangGameProfile: Any): WrappedGameProfile = MojangGameProfile(mojangGameProfile)
-
-internal fun WrappedGameProfile(packetEventsUserProfile: UserProfile): WrappedGameProfile = PacketEventsUserProfile(packetEventsUserProfile)
 
 internal val Player.gameProfile: WrappedGameProfile
     get() {

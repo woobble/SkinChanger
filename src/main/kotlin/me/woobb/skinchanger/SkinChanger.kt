@@ -52,15 +52,15 @@ public interface SkinChanger :
      * Some predefined skins.
      */
     public companion object {
-        public val Efe: Skin = Skins.Efe
-        public val Makena: Skin = Skins.Makena
-        public val Ari: Skin = Skins.Ari
-        public val Kai: Skin = Skins.Kai
-        public val Alex: Skin = Skins.Alex
-        public val Noor: Skin = Skins.Noor
-        public val Steve: Skin = Skins.Steve
-        public val Sunny: Skin = Skins.Sunny
-        public val Zuri: Skin = Skins.Zuri
+        public val Efe: Skin by lazy { Skins.Efe }
+        public val Makena: Skin by lazy { Skins.Makena }
+        public val Ari: Skin by lazy { Skins.Ari }
+        public val Kai: Skin by lazy { Skins.Kai }
+        public val Alex: Skin by lazy { Skins.Alex }
+        public val Noor: Skin by lazy { Skins.Noor }
+        public val Steve: Skin by lazy { Skins.Steve }
+        public val Sunny: Skin by lazy { Skins.Sunny }
+        public val Zuri: Skin by lazy { Skins.Zuri }
     }
 }
 

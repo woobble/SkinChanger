@@ -1,7 +1,7 @@
 package me.woobb.skinchanger.internal.skin
 
-import me.woobb.skinchanger.internal.utils.WrappedTextureProperty
 import me.woobb.skinchanger.skin.PlayerSkin
+import me.woobb.skinchanger.utils.WrappedTextureProperty
 import org.bukkit.OfflinePlayer
 
 internal class PlayerSkinImpl(

@@ -4,6 +4,7 @@ import com.github.retrooper.packetevents.protocol.player.TextureProperty
 import com.github.retrooper.packetevents.protocol.player.UserProfile
 import com.mojang.authlib.GameProfile
 import com.mojang.authlib.properties.Property
+import me.woobb.skinchanger.utils.WrappedTextureProperty
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
