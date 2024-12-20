@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.kotlinx.atomicfu)
 }
 
-group = "me.woobb"
+group = "me.woobb.skinchanger"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -16,8 +16,6 @@ repositories {
 
     maven("https://oss.sonatype.org/content/repositories/snapshots")
     maven("https://oss.sonatype.org/content/repositories/central")
-
-    // maven("https://repo.papermc.io/repository/maven-public/")
 
     maven("https://libraries.minecraft.net/")
 
@@ -45,10 +43,6 @@ tasks {
         dependsOn(shadowJar)
     }
 
-//    assemble {
-//        dependsOn(reobfJar)
-//    }
-
     test {
         useJUnitPlatform()
         finalizedBy(jacocoTestReport)
@@ -65,8 +59,8 @@ tasks {
 
     shadowJar {
         destinationDirectory.set(file("/home/woobb/Documents/Minecraft/spigot-1.21/plugins"))
-//        isEnableRelocation = true
-//        relocationPrefix = "me.woobb"
+        isEnableRelocation = true
+        relocationPrefix = "me.woobb"
     }
 }
 
