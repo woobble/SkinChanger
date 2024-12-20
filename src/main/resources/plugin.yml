@@ -1,6 +1,7 @@
 name: SkinChanger
-version: 1.0
+version: 1.0-SNAPSHOT
 main: me.woobb.skinchanger.internal.plugin.SkinChangerPlugin
+author: Woobble
 api-version: 1.13
 softdepend:
   - packetevents
