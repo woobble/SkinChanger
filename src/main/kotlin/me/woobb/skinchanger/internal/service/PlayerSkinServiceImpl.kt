@@ -71,8 +71,4 @@ internal class PlayerSkinServiceImpl(
             skinCache[uniqueId] = it
         }
     }
-
-    companion object {
-        private val STEVE = UUID.fromString("8667ba71-b85a-4004-af54-457a9734eed7")
-    }
 }
