@@ -1,0 +1,12 @@
+name: SkinChanger
+version: 1.0
+main: me.woobb.skinchanger.internal.plugin.SkinChangerPlugin
+api-version: 1.13
+softdepend:
+  - packetevents
+  - ProtocolLib
+  - ProtocolSupport
+  - ViaVersion
+  - ViaBackwards
+  - ViaRewind
+  - Geyser-Spigot
