@@ -1,5 +1,6 @@
 package me.woobb.skinchanger
 
+import com.github.retrooper.packetevents.PacketEventsAPI
 import kotlinx.coroutines.CoroutineScope
 import me.woobb.skinchanger.internal.SkinChangerImpl
 import me.woobb.skinchanger.internal.Skins
@@ -71,3 +72,15 @@ public interface SkinChanger :
  * @return A new instance of [SkinChanger].
  */
 public fun SkinChanger(plugin: Plugin): SkinChanger = SkinChangerImpl(plugin)
+
+/**
+ * Creates a new instance of [SkinChanger].
+ *
+ * @param plugin The plugin instance.
+ * @param packetEvents The PacketEvents API instance.
+ * @return A new instance of [SkinChanger].
+ */
+public fun SkinChanger(
+    plugin: Plugin,
+    packetEvents: PacketEventsAPI<Plugin>,
+): SkinChanger = SkinChangerImpl(plugin, packetEvents)

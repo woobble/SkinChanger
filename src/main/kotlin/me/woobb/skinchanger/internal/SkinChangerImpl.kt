@@ -27,7 +27,7 @@ import kotlin.coroutines.suspendCoroutine
 
 internal class SkinChangerImpl(
     private val plugin: Plugin,
-    internal val packetEvents: PacketEventsAPI<*> = PacketEvents.getAPI(),
+    internal val packetEvents: PacketEventsAPI<Plugin> = PacketEvents.getAPI() as PacketEventsAPI<Plugin>,
 ) : SkinChanger,
     CoroutineScope {
     internal val mojangClient = MojangClient()
