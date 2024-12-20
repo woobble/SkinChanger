@@ -1,0 +1,18 @@
+name: SkinChanger-Exmaple-Basic
+version: 1.0-SNAPSHOT
+main: me.woobb.skinchanger.example.BasicPlugin
+author: Woobble
+api-version: 1.13
+depend:
+  - packetevents
+softdepend:
+  - ProtocolLib
+  - ProtocolSupport
+  - ViaVersion
+  - ViaBackwards
+  - ViaRewind
+  - Geyser-Spigot
+commands:
+  skin:
+    description: Change your skin
+    usage: /skin <skinName>
