@@ -27,6 +27,7 @@ import kotlin.coroutines.suspendCoroutine
 
 internal class SkinChangerImpl(
     private val plugin: Plugin,
+    internal val callContext: CoroutineContext,
     internal val packetEvents: PacketEventsAPI<Plugin> = PacketEvents.getAPI() as PacketEventsAPI<Plugin>,
 ) : SkinChanger,
     CoroutineScope {
@@ -35,16 +36,14 @@ internal class SkinChangerImpl(
     override val playerSkinService = PlayerSkinServiceImpl(this)
     internal val customSkinManagementService = CustomSkinManagementService(this)
 
-    private val executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() / 2)
     override val coroutineContext: CoroutineContext by lazy {
-        CoroutineName("SkinChanger") + executorService.asCoroutineDispatcher() + SupervisorJob()
+        CoroutineName("SkinChanger") + callContext + SupervisorJob()
     }
 
     init {
         Runtime.getRuntime().addShutdownHook(Thread { close() })
 
         packetEvents.eventManager.registerListener(playerService, PacketListenerPriority.NORMAL)
-
         plugin.server.pluginManager.registerEvents(playerService, plugin)
     }
 

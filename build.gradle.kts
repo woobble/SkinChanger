@@ -2,7 +2,6 @@ plugins {
     jacoco
 
     alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.shadow)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.kotlinx.atomicfu)
 }
@@ -26,12 +25,11 @@ repositories {
 
 dependencies {
     compileOnly(libs.spigot.api)
+    compileOnly(libs.packetevents)
 
     implementation(libs.bundles.kotlinx.coroutines)
     implementation(libs.bundles.ktor)
     implementation(libs.kotlinx.serialization.json)
-
-    implementation(libs.packetevents)
 
     testImplementation(libs.mojang.authlib)
     testImplementation(kotlin("test"))
@@ -41,10 +39,6 @@ dependencies {
 }
 
 tasks {
-    build {
-        dependsOn(shadowJar)
-    }
-
     test {
         useJUnitPlatform()
         finalizedBy(jacocoTestReport)
@@ -57,11 +51,6 @@ tasks {
         }
 
         dependsOn(test)
-    }
-
-    shadowJar {
-        isEnableRelocation = true
-        relocationPrefix = "me.woobb"
     }
 }
 

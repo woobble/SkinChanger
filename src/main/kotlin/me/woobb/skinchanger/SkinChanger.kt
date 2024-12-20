@@ -9,6 +9,8 @@ import me.woobb.skinchanger.skin.Skin
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import java.io.Closeable
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.coroutineContext
 
 /**
  * Change the skin of a player to a desired skin.
@@ -71,7 +73,19 @@ public interface SkinChanger :
  * @param plugin The plugin instance.
  * @return A new instance of [SkinChanger].
  */
-public fun SkinChanger(plugin: Plugin): SkinChanger = SkinChangerImpl(plugin)
+public suspend fun SkinChanger(plugin: Plugin): SkinChanger = SkinChangerImpl(plugin, coroutineContext)
+
+/**
+ * Creates a new instance of [SkinChanger].
+ *
+ * @param plugin The plugin instance.
+ * @param callContext The coroutine context.
+ * @return A new instance of [SkinChanger].
+ */
+public fun SkinChanger(
+    plugin: Plugin,
+    callContext: CoroutineContext,
+): SkinChanger = SkinChangerImpl(plugin, callContext)
 
 /**
  * Creates a new instance of [SkinChanger].
@@ -80,7 +94,21 @@ public fun SkinChanger(plugin: Plugin): SkinChanger = SkinChangerImpl(plugin)
  * @param packetEvents The PacketEvents API instance.
  * @return A new instance of [SkinChanger].
  */
+public suspend fun SkinChanger(
+    plugin: Plugin,
+    packetEvents: PacketEventsAPI<Plugin>,
+): SkinChanger = SkinChangerImpl(plugin, coroutineContext, packetEvents)
+
+/**
+ * Creates a new instance of [SkinChanger].
+ *
+ * @param plugin The plugin instance.
+ * @param packetEvents The PacketEvents API instance.
+ * @param callContext The coroutine context.
+ * @return A new instance of [SkinChanger].
+ */
 public fun SkinChanger(
     plugin: Plugin,
     packetEvents: PacketEventsAPI<Plugin>,
-): SkinChanger = SkinChangerImpl(plugin, packetEvents)
+    callContext: CoroutineContext,
+): SkinChanger = SkinChangerImpl(plugin, callContext, packetEvents)

@@ -10,7 +10,6 @@ import io.ktor.client.engine.apache5.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.cache.*
 import io.ktor.client.plugins.contentnegotiation.*
-import io.ktor.client.plugins.logging.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
@@ -64,7 +63,6 @@ internal class MojangClient(
                 requestTimeoutMillis = 5000
             }
             install(HttpCache)
-            install(Logging)
             CurlUserAgent()
         }
 
